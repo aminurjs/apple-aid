@@ -84,7 +84,7 @@ const Navbar = () => {
                     {item.submenu.map((subItem) => (
                       <li key={subItem.id}>
                         <Link
-                          className="text-primary text-sm hover:text-red-2 py-1 inline-block font-semibold"
+                          className="text-primary  text-sm hover:text-red-2 py-1.5 inline-block font-semibold"
                           href={subItem.path}
                         >
                           {subItem.name}
