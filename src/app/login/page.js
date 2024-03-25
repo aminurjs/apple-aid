@@ -1,6 +1,8 @@
 "use client";
 import { Button } from "@/components/ui/button";
+import useAuth from "@/hooks/useAuth";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 
 function LoginForm() {
@@ -9,9 +11,19 @@ function LoginForm() {
     handleSubmit,
     formState: { errors },
   } = useForm();
+  const { login } = useAuth();
+  const router = useRouter();
 
   const onSubmit = (data) => {
-    console.log(data); // You can handle the login functionality here
+    const { email, password } = data;
+    login(email, password)
+      .then((result) => {
+        console.log(result.user);
+        router.push("/", { scroll: false });
+      })
+      .catch((err) => {
+        console.error(err);
+      });
   };
 
   return (

@@ -1,17 +1,27 @@
 "use client";
 import { Button } from "@/components/ui/button";
+import useAuth from "@/hooks/useAuth";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 
 function SignUpForm() {
+  const { createUser } = useAuth();
+  const router = useRouter();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => {
-    console.log(data); // You can handle the sign-up functionality here
+  const onSubmit = async (data) => {
+    console.log(data);
+    createUser(data.email, data.password)
+      .then((result) => {
+        console.log(result.user);
+        router.push("/", { scroll: false });
+      })
+      .catch((error) => console.log(error));
   };
 
   return (

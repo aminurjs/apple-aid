@@ -7,6 +7,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRef, useState } from "react";
 import { MobileNav } from "./MobileNav";
+import UserProfile from "./UserProfile";
 
 export const menuItems = [
   { id: 1, name: "Home", path: "/" },
@@ -100,7 +101,7 @@ const Navbar = () => {
         <div className="flex gap-5">
           <form className="relative">
             <input
-              className="bg-gray-50 border border-gray-100 rounded outline-none py-2 px-3 pr-12 w-40 md:w-60 text-sm"
+              className="bg-gray-50 border border-gray-100 rounded outline-none py-2 px-3 pr-12 w-40 md:w-60 text-sm focus:border-red-2"
               type="text"
               name="search"
               placeholder="Search..."
@@ -112,9 +113,9 @@ const Navbar = () => {
               <Search className="w-5 h-5" />
             </button>
           </form>
-          <button className="px-3 py-2 border border-red-2 text-red-2 text-sm bg-transparent hover:bg-red-2 hover:text-white max-lg:hidden">
-            Login
-          </button>
+          <div className="max-lg:hidden w-28">
+            <UserProfile />
+          </div>
           <div className="lg:hidden">
             <MobileNav />
           </div>
