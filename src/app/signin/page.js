@@ -1,13 +1,15 @@
 "use client";
 import { Button } from "@/components/ui/button";
 import useAuth from "@/hooks/useAuth";
+import useAxios from "@/hooks/useAxios";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 
 function SignUpForm() {
-  const { createUser } = useAuth();
+  const { createUser, updateUser } = useAuth();
   const router = useRouter();
+  const axios = useAxios();
   const {
     register,
     handleSubmit,
@@ -16,10 +18,26 @@ function SignUpForm() {
 
   const onSubmit = async (data) => {
     console.log(data);
-    createUser(data.email, data.password)
+    const { name, password, email } = data;
+    createUser(email, password)
       .then((result) => {
-        console.log(result.user);
-        router.push("/", { scroll: false });
+        let photo = null;
+        updateUser(name, photo).then(() => {
+          console.log(result.user);
+          const user = {
+            email: result.user.email,
+            name: result.user.displayName,
+          };
+          axios
+            .post(`/sign-in`, user)
+            .then((response) => {
+              console.log(response.data);
+              router.push("/", { scroll: false });
+            })
+            .catch((error) => {
+              return console.log(error.code);
+            });
+        });
       })
       .catch((error) => console.log(error));
   };

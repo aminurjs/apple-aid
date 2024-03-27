@@ -87,7 +87,7 @@ const Services = () => {
         </div>
       </section>
       <section className="max-w-screen-xl mx-auto px-5 md:px-10 py-12">
-        <div className="flex flex-col-reverse lg:flex-row items-center gap-10 mb-12">
+        <div className="flex flex-col lg:flex-row items-center gap-10 mb-12">
           <div className="lg:w-1/2">
             <h1 className="text-4xl text-gray-500 font-medium mb-5">
               We Can Fixed it Almost

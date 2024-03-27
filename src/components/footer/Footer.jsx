@@ -1,17 +1,18 @@
 /* eslint-disable @next/next/no-img-element */
-import { MapPin, Phone, PhoneCall } from "lucide-react";
+import { MapPin, PhoneCall } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import Login from "./Login";
 
 const Footer = () => {
   return (
     <div className="bg-gradient-to-b from-[#c01a3630] to-white pt-12 pb-5 -mb-6">
       <div className="max-w-7xl mx-auto px-5">
         <div className="flex justify-center items-center flex-col mb-6 pb-6 border-b border-gray-300">
-          <Image src="/assets/logo.png" alt="logo" height={80} width={100} />
-          <button className="mt-5 px-10 py-2 bg-red-2 text-white rounded-md text-sm active:scale-95 max-sm:hidden">
-            Login
-          </button>
+          <Link href="/">
+            <Image src="/assets/logo.png" alt="logo" height={80} width={100} />
+          </Link>
+          <Login />
         </div>
         <div className="px-5 lg:px-0 grid grid-cols-2  gap-6 border-b pb-6 border-gray-200">
           <div className="text-center">

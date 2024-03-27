@@ -1,16 +1,22 @@
 import { useEffect, useState } from "react";
 import {
+  GoogleAuthProvider,
   createUserWithEmailAndPassword,
   onAuthStateChanged,
   signInWithEmailAndPassword,
+  signInWithPopup,
   signOut,
   updateProfile,
 } from "firebase/auth";
 import auth from "@/config/firebase.config";
+import useAxios from "./useAxios";
 
 const useAuth = () => {
+  const axios = useAxios();
   const [user, setUser] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [isRoleLoading, setIsRoleLoading] = useState(true);
+  const [userRole, setUserRole] = useState();
 
   const createUser = (email, password) => {
     setIsLoading(true);
@@ -32,6 +38,10 @@ const useAuth = () => {
     setIsLoading(true);
     return signOut(auth);
   };
+  const googleProvider = new GoogleAuthProvider();
+  const googleLogin = () => {
+    return signInWithPopup(auth, googleProvider);
+  };
 
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
@@ -43,7 +53,22 @@ const useAuth = () => {
       return unSubscribe();
     };
   }, []);
-  console.log(user);
+  useEffect(() => {
+    if (user) {
+      axios
+        .get(`/user/${user.email}`)
+        .then(function (response) {
+          const { role } = response.data;
+          setUserRole({ role });
+          setIsRoleLoading(false);
+        })
+        .catch(function (error) {
+          console.log(error);
+          setUserRole({ role: null });
+          setIsRoleLoading(false);
+        });
+    }
+  }, [user, axios]);
   return {
     createUser,
     login,
@@ -51,6 +76,9 @@ const useAuth = () => {
     user,
     isLoading,
     logout,
+    googleLogin,
+    userRole,
+    isRoleLoading,
   };
 };
 

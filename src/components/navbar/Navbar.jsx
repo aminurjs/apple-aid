@@ -48,9 +48,9 @@ const Navbar = () => {
   return (
     <header className="w-full py-5 sm:px10 px-5 border-b border-gray-200">
       <nav className="max-w-screen-xl mx-auto flex justify-between items-center">
-        <div>
+        <Link href="/">
           <Image src="/assets/logo.png" alt="logo" height={50} width={80} />
-        </div>
+        </Link>
         <ul className="flex justify-center max-lg:hidden gap-4">
           {menuItems.map((item) => (
             <li key={item.id}>

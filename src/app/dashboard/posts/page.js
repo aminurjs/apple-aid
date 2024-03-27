@@ -2,7 +2,7 @@ import Editor from "@/components/editor/Editor";
 
 const Posts = () => {
   return (
-    <div>
+    <div className="p-5">
       <Editor />
     </div>
   );

@@ -14,6 +14,7 @@ import { menuItems } from "./Navbar";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { useState } from "react";
+import UserProfile from "./UserProfile";
 
 export const MobileNav = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -27,10 +28,17 @@ export const MobileNav = () => {
       <SheetContent className="p-0" side="left">
         <SheetHeader>
           <SheetTitle className="flex justify-center items-center flex-col p-8 bg-gray-100">
-            <Image src="/assets/logo.png" alt="logo" height={80} width={100} />
-            <button className="mt-5 px-10 py-2 bg-red-2 text-white rounded-md text-sm active:scale-95 max-sm:hidden">
-              Login
-            </button>
+            <Link href="/">
+              <Image
+                src="/assets/logo.png"
+                alt="logo"
+                height={80}
+                width={100}
+              />
+            </Link>
+            <div className="w-28 mt-4">
+              <UserProfile />
+            </div>
           </SheetTitle>
           <SheetDescription>
             <ol>

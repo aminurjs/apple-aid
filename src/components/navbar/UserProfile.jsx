@@ -1,3 +1,4 @@
+"use client";
 import useAuth from "@/hooks/useAuth";
 import { User } from "lucide-react";
 import Link from "next/link";
@@ -10,7 +11,7 @@ const UserProfile = () => {
       {isLoading ? (
         <button
           type="button"
-          class="w-full flex items-center justify-center py-2 border border-red-2 text-red-2 text-sm bg-transparent hover:bg-red-2 hover:text-white"
+          className="w-full flex items-center justify-center py-2 border border-red-2 text-red-2 text-sm bg-transparent hover:bg-red-2 hover:text-white"
           disabled
         >
           Loading...

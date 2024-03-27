@@ -6,7 +6,9 @@ const DashboardLayout = ({ children }) => {
       <div className=" bg-white flex-grow-0">
         <Menubar />
       </div>
-      <div className="flex-grow bg-stone-100">{children}</div>
+      <div className="flex-grow bg-stone-100 h-full  overflow-y-auto">
+        {children}
+      </div>
     </div>
   );
 };
