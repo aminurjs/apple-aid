@@ -1,13 +1,14 @@
 "use client";
 
 /* eslint-disable @next/next/no-img-element */
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 const ImageUpload = ({ sendImage }) => {
-  const [image, setImage] = useState("null");
+  const [image, setImage] = useState(null);
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
+    sendImage(file);
     const reader = new FileReader();
 
     reader.onloadend = () => {
@@ -22,12 +23,9 @@ const ImageUpload = ({ sendImage }) => {
   const handleRemoveImage = () => {
     setImage(null);
   };
-  useEffect(() => {
-    sendImage(image);
-  }, [image, sendImage]);
 
   return (
-    <div className="w-40 lg:w-60">
+    <div className="w-full md:w-40 lg:w-60">
       <label
         htmlFor="img-upload"
         className="mb-2 text-primary font-medium block"

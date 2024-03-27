@@ -19,9 +19,9 @@ import useAuth from "@/hooks/useAuth";
 const dashboardMenu = [
   {
     id: 1,
-    title: "Dashboard",
+    title: "Home",
     icon: <Home />,
-    link: "/dashboard",
+    link: "/dashboard/admin",
   },
   {
     id: 2,
@@ -30,19 +30,19 @@ const dashboardMenu = [
     link: "/dashboard/posts",
   },
   {
-    id: 2,
+    id: 3,
     title: "Orders",
     icon: <ShoppingBasket />,
     link: "/dashboard/orders",
   },
   {
-    id: 3,
+    id: 4,
     title: "Products",
     icon: <Truck />,
     link: "/dashboard/products",
   },
   {
-    id: 4,
+    id: 5,
     title: "Analytics",
     icon: <AreaChart />,
     link: "/dashboard/analytics",
@@ -55,7 +55,7 @@ const dashboardMenu = [
   },
 
   {
-    id: 5,
+    id: 7,
     title: "Settings",
     icon: <Settings2 />,
     link: "/dashboard/settings",
